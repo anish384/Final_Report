@@ -1,0 +1,92 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage{graphicx}
+\usepackage{titleps}
+\usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{lipsum}
+\usepackage{setspace}
+\usepackage[hidelinks]{hyperref}
+\usepackage[left=3.5cm, right=1.25cm, top=2.5cm, bottom=3cm]{geometry}
+\usepackage{mathptmx}
+\usepackage[numbers]{natbib}
+\usepackage{emptypage}
+\usepackage[nottoc]{tocbibind}
+\usepackage{enumitem}
+\usepackage{graphicx}\graphicspath{{img/}}
+
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% Page style setup
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{30pt}
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{2pt}
+\fancyhead[L]{Development of Machine Intelligence for Self-Driving Vehicles through Video Capturing}
+\fancyhead[C]{}
+% \fancyhead[R]{\rightmark}
+\fancyfoot[L]{Dept. of CSE, AITM, Belagavi}
+\fancyfoot[R]{\thepage}
+
+\doublespacing
+
+\begin{document}
+
+% Front matter with Roman numerals
+\pagenumbering{roman}
+
+% Title page (create a proper one)
+\title{Development of Machine Intelligence for Self-Driving Vehicles through Video Capturing}
+\author{
+    Anish \and
+    Pranav \and
+    Rohit \and
+    Akshay
+}
+\date{\today}
+\maketitle
+
+% Generate table of contents
+\tableofcontents
+\newpage
+
+% Generate list of figures
+\listoffigures
+\newpage
+
+% Abstract
+\thispagestyle{empty}
+\begin{center}
+    \large\textbf{ABSTRACT}
+\end{center}
+\vspace{0.5cm}
+
+\begin{doublespace}
+Autonomous vehicle perception systems experience significant performance degradation during adverse weather conditions, with accuracy reductions of 15-40\% in rain, fog, and snow scenarios. Lane detection algorithms frequently fail on roads with faded markings or shadows, creating critical safety risks for real-world deployment.
+
+
+This project develops an enhanced machine intelligence system using deep learning and video analysis to address these limitations. The solution implements a multi-component architecture featuring weather-adaptive preprocessing, multi-scale feature extraction, temporal integration with recurrent neural networks, and attention-based mechanisms for automotive applications. The system also incorporates notification capabilities to alert operators about critical perception events through SMS and other communication channels, ensuring timely intervention when needed.
+\end{doublespace}
+\clearpage
+
+% Main content with Arabic numerals
+\pagenumbering{arabic}
+
+% Include your chapters
+\include{Chapters/ch1}
+\include{Chapters/ch2}
+\include{Chapters/ch3}
+\include{Chapters/ch4}
+\include{Chapters/ch5}
+
+% Bibliography
+\singlespacing
+% \addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{IEEEtran}
+\bibliography{mybib}
+
+
+
+\end{document}
