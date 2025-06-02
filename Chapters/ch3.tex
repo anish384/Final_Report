@@ -15,6 +15,95 @@ Existing autonomous vehicle perception systems demonstrate several critical limi
 \end{doublespace}
 
 \section{System Architecture Analysis}
+
+	
+	\begin{figure}[htbp]
+		\centering
+		\begin{tikzpicture}[scale=0.75, transform shape, % Scale down the entire diagram
+			box/.style={
+				draw, 
+				rectangle, 
+				rounded corners=3pt,
+				minimum width=5.5cm, % Reduced width
+				minimum height=1.6cm, % Reduced height
+				text width=5.3cm, % Reduced text width
+				align=center,
+				font=\small
+			},
+			arrow/.style={->, >={Stealth}, semithick},
+			node distance=1.5cm and 1.2cm % Reduced spacing
+		]
+			
+		% Top level node
+		\node[box] (input) {
+			\textbf{Input Processing Module}\\[0.1cm]
+			\begin{itemize}[leftmargin=*,nosep,topsep=0pt]
+				\item Dynamic contrast adjustment
+				\item Noise reduction techniques
+				\item Real-time weather filtering
+			\end{itemize}
+		};
+			
+		% Second level node
+		\node[box, below=of input] (feature) {
+			\textbf{Multi-Scale Feature Extraction}\\[0.1cm]
+			\begin{itemize}[leftmargin=*,nosep,topsep=0pt]
+				\item Pyramid-based approach
+				\item Combined fine and contextual features
+			\end{itemize}
+		};
+			
+		% Third level nodes - left side
+		\node[box, below left=of feature] (temporal) {
+			\textbf{Temporal Integration Component}\\[0.1cm]
+			\begin{itemize}[leftmargin=*,nosep,topsep=0pt]
+				\item Frame history analysis
+				\item Occlusion-aware processing
+			\end{itemize}
+		};
+			
+		% Third level nodes - right side
+		\node[box, below right=of feature] (weather) {
+			\textbf{Weather Classification Module}\\[0.1cm]
+			\begin{itemize}[leftmargin=*,nosep,topsep=0pt]
+				\item Detects weather conditions
+				\item Dynamic pipeline switching
+			\end{itemize}
+		};
+			
+		% Fourth level nodes
+		\node[box, below=of temporal] (perception) {
+			\textbf{Processed Perception Outputs}\\[0.1cm]
+			\begin{itemize}[leftmargin=*,nosep,topsep=0pt]
+				\item Lane detection and tracking
+				\item Object classification
+			\end{itemize}
+		};
+			
+		\node[box, below=of weather] (notification) {
+			\textbf{Notification and Alert System}\\[0.1cm]
+			\begin{itemize}[leftmargin=*,nosep,topsep=0pt]
+				\item SMS and priority alerts
+				\item System status reports
+			\end{itemize}
+		};
+			
+		% Arrows connecting the nodes
+		\draw[arrow] (input) -- (feature);
+		\draw[arrow] (feature) -| (temporal);
+		\draw[arrow] (feature) -| (weather);
+		\draw[arrow] (temporal) -- (perception);
+		\draw[arrow] (weather) -- (notification);
+			
+		% Dashed connection between temporal and weather
+		\draw[dashed, semithick] (temporal) -- (weather) 
+			node[midway, above, font=\scriptsize] {Feedback Loop};
+			
+		\end{tikzpicture}
+		\caption{Architecture of the autonomous vehicle perception system}
+		\label{fig:system_arch_wide}
+	\end{figure}
+
 \begin{doublespace}
 The proposed enhanced perception system addresses identified limitations through a multi-component architecture designed for robustness and reliability across diverse operational conditions:
 
